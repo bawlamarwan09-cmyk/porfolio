@@ -6,7 +6,6 @@ import { useI18n } from "@/i18n/I18nProvider";
 import { site } from "@/data/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-const budgets = ["< 2k€", "2k - 5k€", "5k - 15k€", "15k+ €"];
 
 export function Contact() {
   const { t } = useI18n();
@@ -35,18 +34,6 @@ export function Contact() {
             </div>
             <Field label={t.contact.project}>
               <textarea required name="project" rows={5} className="input resize-none" />
-            </Field>
-            <Field label={t.contact.budget}>
-              <div className="flex flex-wrap gap-2">
-                {budgets.map((b) => (
-                  <label key={b} className="cursor-pointer">
-                    <input type="radio" name="budget" value={b} className="peer sr-only" />
-                    <span className="inline-flex rounded-full border border-white/10 bg-white/[0.02] px-3 py-1.5 text-xs text-muted peer-checked:border-primary/60 peer-checked:bg-primary/10 peer-checked:text-fg transition">
-                      {b}
-                    </span>
-                  </label>
-                ))}
-              </div>
             </Field>
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-3 pt-2">
