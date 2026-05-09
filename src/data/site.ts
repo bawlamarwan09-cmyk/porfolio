@@ -4,14 +4,14 @@ export const site = {
   initials: "MB",
   avatar: "/profile.jpg",
   url: "https://marouane-baoulla.dev",
-  email: "marouane.baoulla@gmail.com",
-  phone: "+212 600 000 000",
+  email: "marouanebaoulla@gmail.com",
+  phone: "+212 7 62 65 96 66",
   location: "Morocco",
   socials: {
     linkedin: "https://www.linkedin.com/in/marouane-baoulla/",
     github: "https://github.com/bawlamarwan09-cmyk",
     instagram: "https://instagram.com/marouane68e",
-    email: "mailto:marouane.baoulla@gmail.com"
+    email: "mailto:marouanebaoulla@gmail.com"
   },
   keywords: [
     "Développeur Full Stack Maroc",
