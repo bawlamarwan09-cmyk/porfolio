@@ -7,6 +7,7 @@ import { ArrowUpRight, ExternalLink, Github } from "lucide-react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { projects, projectCategories, ProjectCategory } from "@/data/projects";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Tilt } from "@/components/ux/Tilt";
 
 export function Projects() {
   const { t, locale } = useI18n();
@@ -41,11 +42,11 @@ export function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.55, delay: (i % 4) * 0.06 }}
-                className={`group relative overflow-hidden rounded-3xl glass gradient-border ${
-                  big ? "lg:col-span-4 lg:row-span-2" : "lg:col-span-2 lg:row-span-1"
-                }`}
+                className={`${big ? "lg:col-span-4 lg:row-span-2" : "lg:col-span-2 lg:row-span-1"}`}
+                style={{ perspective: 1200 }}
               >
-                <Link href={`/projects/${p.slug}`} className="block h-full">
+                <Tilt max={9} className="group relative h-full overflow-hidden rounded-3xl glass gradient-border will-change-transform">
+                <Link href={`/projects/${p.slug}`} className="block h-full" style={{ transform: "translateZ(40px)" }}>
                   <div className="relative h-56 sm:h-64 lg:h-full w-full overflow-hidden">
                     <Image
                       src={p.cover}
@@ -97,6 +98,7 @@ export function Projects() {
                     <ArrowUpRight size={16} />
                   </div>
                 </Link>
+                </Tilt>
               </motion.article>
             );
           })}

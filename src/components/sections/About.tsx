@@ -1,15 +1,29 @@
 "use client";
 import { motion } from "framer-motion";
 import { Check, Github, Linkedin, Mail } from "lucide-react";
+import dynamic from "next/dynamic";
 import { useI18n } from "@/i18n/I18nProvider";
 import { timeline } from "@/data/tech";
 import { site } from "@/data/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { useIs3DEnabled } from "@/hooks/useIs3DEnabled";
+
+const AboutFog = dynamic(
+  () => import("@/components/three/AboutFog").then((m) => m.AboutFog),
+  { ssr: false }
+);
 
 export function About() {
   const { t, locale } = useI18n();
+  const enable3D = useIs3DEnabled();
   return (
-    <section id="about" className="relative py-24 sm:py-32">
+    <section id="about" className="relative py-24 sm:py-32 overflow-hidden">
+      {enable3D && (
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 opacity-70">
+          <AboutFog />
+        </div>
+      )}
+      <div className="absolute inset-0 -z-20 bg-radial opacity-60" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading eyebrow={t.about.eyebrow} title={t.about.title} subtitle={t.about.body} align="left" />
 

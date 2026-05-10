@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { CursorGlow } from "@/components/ux/CursorGlow";
 import { ScrollProgress } from "@/components/ux/ScrollProgress";
 import { Loader } from "@/components/ux/Loader";
+import { LenisProvider } from "@/components/ux/LenisProvider";
 import { site } from "@/data/site";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -83,12 +84,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }}
         />
         <I18nProvider>
-          <Loader />
-          <ScrollProgress />
-          <CursorGlow />
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <LenisProvider>
+            <Loader />
+            <ScrollProgress />
+            <CursorGlow />
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </LenisProvider>
         </I18nProvider>
       </body>
     </html>
